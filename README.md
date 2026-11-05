@@ -1,87 +1,172 @@
-<div align="center">
-◈ DevOps Monitor
-Plataforma Inteligente de Monitoramento de Serviços de Rede
+# ◈ DevOps Monitor
 
-Monitoramento • Observabilidade • Segurança • DevOps
+### MONITOR YOUR INFRASTRUCTURE. UNDERSTAND EVERY SIGNAL.
 
-<br>
+**Uma plataforma inteligente para monitoramento, observabilidade e segurança de serviços de rede.**
 
+Centralizando métricas, identificando anomalias e transformando dados operacionais em informações estratégicas.
 
+<p align="left">
+  <img src="https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-8B5CF6?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js">
+</p>
 
+[Visão geral](#-visão-geral) • [Funcionalidades](#-funcionalidades) • [Tecnologias](#-tecnologias) • [Arquitetura](#-arquitetura) • [Instalação](#-instalação) • [Roadmap](#-roadmap)
 
+---
 
+## ◈ Visão geral
 
-<br>
+O **DevOps Monitor** é uma plataforma web desenvolvida para centralizar o monitoramento de serviços de rede, permitindo acompanhar disponibilidade, desempenho, métricas operacionais e indicadores de segurança por meio de dashboards interativos.
 
-Sobre •
-Funcionalidades •
-Arquitetura •
-Tecnologias •
-Instalação •
-Roadmap
+A proposta é oferecer uma visão consolidada da infraestrutura monitorada, facilitando a identificação de falhas, degradações de desempenho e comportamentos potencialmente suspeitos.
 
-<br>
+A plataforma contará com módulos independentes de monitoramento, responsáveis por verificar periodicamente os serviços cadastrados, coletar métricas e encaminhar os resultados para processamento e armazenamento.
 
-Status: 🚧 Em desenvolvimento
+Além disso, o sistema terá mecanismos de classificação de alertas e envio de notificações automáticas por e-mail, permitindo que situações críticas sejam identificadas e acompanhadas de maneira centralizada.
 
-</div>
-📌 Sobre o Projeto
+> **Monitoramento inteligente. Infraestrutura confiável.**
 
-O DevOps Monitor é uma plataforma web desenvolvida para centralizar o monitoramento de serviços de rede, permitindo acompanhar disponibilidade, desempenho, métricas operacionais e indicadores de segurança por meio de dashboards interativos.
+## 🎯 Objetivos do projeto
 
-A aplicação busca oferecer uma visão consolidada da infraestrutura monitorada, facilitando a identificação de falhas, degradações de desempenho e comportamentos potencialmente suspeitos.
+- Desenvolver uma plataforma centralizada para monitoramento de serviços de rede.
+- Implementar dashboards interativos para visualização de métricas operacionais.
+- Monitorar disponibilidade e desempenho de diferentes serviços.
+- Implementar mecanismos de identificação e classificação de alertas.
+- Desenvolver notificações automáticas por e-mail.
+- Incorporar recursos adicionais de monitoramento de segurança.
+- Organizar a aplicação em módulos independentes e de fácil manutenção.
+- Aplicar conceitos de redes de computadores, desenvolvimento web, observabilidade e DevOps.
 
-O sistema contará com mecanismos de coleta periódica de métricas, armazenamento de informações históricas, classificação de alertas e envio de notificações por e-mail.
+---
 
-O projeto está sendo desenvolvido como parte do trabalho final da disciplina Redes de Computadores e Internet, do Instituto Brasileiro de Ensino, Desenvolvimento e Pesquisa (IDP).
-🎯 Objetivos
+## ✨ Funcionalidades
 
-    Desenvolver uma plataforma centralizada de monitoramento de serviços de rede.
+As funcionalidades estão organizadas em módulos para facilitar o desenvolvimento e a evolução da plataforma.
 
-    Implementar dashboards interativos para visualização de métricas.
+### 📊 Monitoramento de serviços
 
-    Monitorar disponibilidade e desempenho de diferentes serviços.
+A plataforma será responsável por acompanhar o funcionamento de diferentes serviços de rede, apresentando indicadores relevantes para cada categoria.
 
-    Implementar mecanismos de identificação e classificação de alertas.
+| Serviço | Indicadores monitorados |
+|---|---|
+| 🌐 **HTTP/HTTPS** | Disponibilidade, latência, requisições e erros |
+| 🗄️ **Database** | Disponibilidade, conexões, consultas e desempenho |
+| 🌍 **DNS** | Tempo de resolução, consultas e falhas |
+| ✉️ **SMTP** | Disponibilidade, latência e erros de comunicação |
 
-    Desenvolver notificações automáticas por e-mail.
+### 📈 Dashboards interativos
 
-    Incorporar recursos adicionais de monitoramento de segurança.
+A interface permitirá acompanhar as informações coletadas por meio de painéis individuais e de uma visão consolidada da infraestrutura.
 
-    Aplicar conceitos de redes de computadores, desenvolvimento web e observabilidade.
+Entre os recursos previstos estão:
 
-⚙️ Funcionalidades
-📊 Monitoramento de Serviços
-Serviço	Indicadores
-🌐 HTTP/HTTPS	Disponibilidade, latência, requisições e erros
-🗄️ Database	Disponibilidade, consultas, conexões e desempenho
-🌍 DNS	Tempo de resolução, consultas e falhas
-✉️ SMTP	Disponibilidade, latência e erros de comunicação
-🚨 Sistema de Alertas
+- Dashboard geral com indicadores de todos os serviços.
+- Painéis individuais para cada serviço monitorado.
+- Gráficos de desempenho e histórico de métricas.
+- Indicadores de disponibilidade e estado operacional.
+- Tabelas com eventos e informações relevantes.
+- Atualização periódica das informações.
 
-A plataforma utilizará três níveis de classificação:
-Nível	Estado	Descrição
-🟢	Normal	Serviço operando dentro dos parâmetros esperados
-🟡	Atenção	Identificação de degradação ou comportamento anormal
-🔴	Crítico	Serviço indisponível ou condição crítica identificada
+### 🚨 Sistema de alertas
+
+O sistema utilizará três níveis de classificação para representar as condições operacionais dos serviços.
+
+| Nível | Estado | Descrição |
+|---|---|---|
+| 🟢 | **Normal** | Serviço operando dentro dos parâmetros esperados. |
+| 🟡 | **Atenção** | Identificação de degradação ou comportamento anormal. |
+| 🔴 | **Crítico** | Serviço indisponível ou condição crítica identificada. |
 
 Os alertas poderão gerar notificações automáticas por e-mail, de acordo com a gravidade do incidente.
-🔐 Monitoramento de Segurança
 
-    Identificação de anomalias de tráfego.
+### 🔐 Monitoramento de segurança
 
-    Monitoramento de tentativas de autenticação malsucedidas.
+O módulo de segurança pretende ampliar a capacidade de observação da infraestrutura por meio da identificação de eventos potencialmente suspeitos.
 
-    Detecção de alterações em arquivos de configuração.
+Funcionalidades previstas:
 
-    Monitoramento de vulnerabilidades conhecidas.
+- Identificação de anomalias no tráfego de rede.
+- Monitoramento de tentativas de autenticação malsucedidas.
+- Identificação de possíveis ataques de força bruta.
+- Detecção de alterações em arquivos de configuração.
+- Monitoramento de vulnerabilidades conhecidas.
+- Identificação de padrões de tráfego potencialmente associados a ataques de negação de serviço (DDoS).
 
-🏗️ Arquitetura
+### ⚙️ Configurações
 
-A aplicação será organizada em módulos independentes, responsáveis pela coleta, processamento, armazenamento e visualização das informações.
+A plataforma contará com uma área para gerenciamento dos parâmetros de monitoramento, incluindo configurações de serviços, atualização de métricas e preferências de alertas.
 
+---
+
+## 🛠️ Tecnologias
+
+O projeto utiliza tecnologias voltadas ao desenvolvimento de aplicações web, processamento de dados e monitoramento de infraestrutura.
+
+### Backend
+
+<p>
+  <img src="https://skillicons.dev/icons?i=python,fastapi" alt="Python e FastAPI">
+</p>
+
+- **Python:** linguagem principal para implementação dos módulos de monitoramento e processamento.
+- **FastAPI:** desenvolvimento da API REST e comunicação entre os componentes.
+- **SQLite:** armazenamento inicial de métricas, eventos e informações operacionais.
+- **Pytest:** desenvolvimento de testes automatizados.
+
+### Frontend
+
+<p>
+  <img src="https://skillicons.dev/icons?i=html,css,js" alt="HTML, CSS e JavaScript">
+</p>
+
+- **HTML5:** estrutura das páginas e componentes da interface.
+- **CSS3:** identidade visual, estilização e responsividade.
+- **JavaScript:** interatividade e integração com o backend.
+- **Chart.js:** construção de gráficos e visualizações de métricas.
+
+### Desenvolvimento e versionamento
+
+<p>
+  <img src="https://skillicons.dev/icons?i=git,github,vscode" alt="Git, GitHub e Visual Studio Code">
+</p>
+
+- **Git:** controle de versão e gerenciamento de alterações.
+- **GitHub:** hospedagem do código e colaboração.
+- **Visual Studio Code:** ambiente de desenvolvimento.
+
+### Papel de cada tecnologia
+
+| Tecnologia | Aplicação no projeto |
+|---|---|
+| **Python** | Implementação dos módulos de monitoramento e processamento. |
+| **FastAPI** | Criação da API REST e integração entre os componentes. |
+| **SQLite** | Persistência inicial de métricas e eventos. |
+| **Pytest** | Testes unitários e de integração. |
+| **HTML5** | Estrutura da interface web. |
+| **CSS3** | Estilização e responsividade. |
+| **JavaScript** | Interatividade e comunicação com a API. |
+| **Chart.js** | Visualização gráfica das métricas. |
+| **Git e GitHub** | Controle de versão e gerenciamento do projeto. |
+
+---
+
+## 🏗️ Arquitetura
+
+A aplicação será organizada em módulos independentes, responsáveis pela coleta, processamento, armazenamento, análise e visualização das informações.
+
+O objetivo dessa organização é separar as responsabilidades de cada componente, facilitando a manutenção e permitindo que novos serviços sejam adicionados futuramente.
+
+### Diagrama da arquitetura
+
+```mermaid
 flowchart TD
-    A[Serviços Monitorados] --> B[Módulo de Monitoramento]
+    A[Serviços Monitorados]
+
+    A --> B[Módulos de Monitoramento]
 
     B --> C[Coleta de Métricas]
 
@@ -98,76 +183,52 @@ flowchart TD
     H --> I[Frontend - Dashboard]
 
     J[Módulo de Segurança] --> D
+```
 
-Fluxo de funcionamento
+*Diagrama conceitual da arquitetura planejada. A implementação dos componentes será realizada de maneira incremental.*
 
-    Os módulos de monitoramento verificam os serviços cadastrados.
+### Fluxo de funcionamento
 
-    As métricas coletadas são encaminhadas ao backend.
+1. Os módulos de monitoramento verificam periodicamente os serviços cadastrados.
+2. As métricas coletadas são encaminhadas ao backend.
+3. O backend processa e organiza as informações recebidas.
+4. Os resultados são armazenados no banco de dados.
+5. O sistema de alertas avalia as métricas e identifica possíveis incidentes.
+6. Notificações são encaminhadas por e-mail conforme a classificação dos alertas.
+7. O frontend consulta a API e apresenta as informações em dashboards interativos.
 
-    O backend processa e armazena os resultados.
+A arquitetura também permitirá que o módulo de segurança encaminhe eventos identificados para o backend, possibilitando a centralização das informações operacionais e de segurança.
 
-    O sistema de alertas avalia as métricas e identifica possíveis incidentes.
+---
 
-    Notificações são enviadas conforme a classificação dos alertas.
+## 📂 Estrutura do projeto
 
-    O frontend apresenta os dados em dashboards interativos.
+A organização do repositório foi planejada para separar os principais componentes da aplicação.
 
-🛠️ Tecnologias
-Backend
-
-<div>
-<img src="https://skillicons.dev/icons?i=python,fastapi" />
-</div>
-
-    Python: linguagem principal da aplicação.
-
-    FastAPI: desenvolvimento da API REST.
-
-    SQLite: armazenamento inicial das métricas.
-
-Frontend
-
-<div>
-<img src="https://skillicons.dev/icons?i=html,css,js" />
-</div>
-
-    HTML5: estrutura das páginas.
-
-    CSS3: estilização e responsividade.
-
-    JavaScript: interatividade e integração com a API.
-
-    Chart.js: construção de gráficos e dashboards.
-
-Desenvolvimento e Versionamento
-
-<div>
-<img src="https://skillicons.dev/icons?i=git,github,vscode" />
-</div>
-
-    Git
-
-    GitHub
-
-    Visual Studio Code
-
-📁 Estrutura do Projeto
-
+```text
 DevOps-Monitor/
 │
 ├── backend/
 │   └── app/
 │       ├── api/
+│       │   └── endpoints/
 │       ├── core/
 │       ├── models/
 │       ├── schemas/
 │       └── services/
 │
 ├── frontend/
+│   ├── assets/
+│   │   └── images/
 │   ├── css/
+│   │   ├── style.css
+│   │   └── dashboard.css
 │   ├── js/
-│   └── assets/
+│   │   ├── app.js
+│   │   ├── dashboard.js
+│   │   ├── charts.js
+│   │   └── api.js
+│   └── index.html
 │
 ├── monitoramento/
 │   ├── web/
@@ -190,134 +251,193 @@ DevOps-Monitor/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+```
 
-🚀 Instalação
-Pré-requisitos
+*Estrutura de referência da arquitetura planejada. Os diretórios e módulos serão preenchidos conforme as etapas de implementação forem concluídas.*
 
-    Python 3.10 ou superior
+---
 
-    Git
+## 🚀 Instalação
 
-    Visual Studio Code (recomendado)
+### Pré-requisitos
 
-1. Clone o repositório
+Antes de iniciar, verifique se o ambiente possui:
 
-git clone https://github.com/SEU-USUARIO/DevOps-Monitor.git
+- Python 3.10 ou superior.
+- Git instalado.
+- Visual Studio Code ou outro editor de sua preferência.
 
-2. Acesse o diretório
+### 1. Clone o repositório
 
+```bash
+git clone https://github.com/Matheus-Nunes223/DevOps-Monitor.git
+```
+
+### 2. Entre na pasta do projeto
+
+```bash
 cd DevOps-Monitor
+```
 
-3. Crie um ambiente virtual
+### 3. Crie um ambiente virtual
 
+No Linux:
+
+```bash
 python3 -m venv .venv
+```
 
-4. Ative o ambiente virtual
+### 4. Ative o ambiente virtual
 
+```bash
 source .venv/bin/activate
+```
 
-5. Instale as dependências
+### 5. Instale as dependências
 
-pip install -r requirements.txt
+```bash
+python -m pip install -r requirements.txt
+```
 
-    A aplicação estará disponível para execução após a implementação dos módulos iniciais.
+### 6. Execute o frontend
 
-🗺️ Roadmap
+Atualmente, o frontend possui dados demonstrativos para permitir a navegação e visualização dos dashboards enquanto o backend está em desenvolvimento.
 
-    Configuração inicial do repositório.
+Para executá-lo localmente:
 
-    Implementação da estrutura do backend.
+```bash
+python3 -m http.server 8000 --directory frontend
+```
 
-    Configuração do banco de dados.
+Acesse a aplicação pelo navegador:
 
-    Monitoramento HTTP/HTTPS.
+```text
+http://localhost:8000
+```
 
-    Monitoramento de bancos de dados.
+> **Nota:** a interface já possui estrutura de integração preparada para a futura API. Os dados apresentados no modo demonstrativo não representam métricas coletadas de serviços reais. A execução completa da plataforma dependerá da implementação e integração dos módulos de backend, monitoramento, armazenamento e alertas.
 
-    Monitoramento DNS.
+---
 
-    Monitoramento SMTP.
+## 🗺️ Roadmap
 
-    Implementação da API REST.
+O desenvolvimento será dividido em etapas para permitir a implementação e validação progressiva dos componentes.
 
-    Desenvolvimento do dashboard consolidado.
+### Estrutura e interface
 
-    Desenvolvimento dos dashboards individuais.
+- [x] Criar o repositório no GitHub.
+- [x] Definir a arquitetura inicial do projeto.
+- [x] Configurar a estrutura inicial de diretórios.
+- [x] Desenvolver a interface principal da plataforma.
+- [x] Implementar os dashboards demonstrativos.
+- [x] Implementar a navegação entre as áreas da aplicação.
+- [x] Preparar a estrutura de integração com a API.
 
-    Implementação do sistema de alertas.
+### Backend e persistência
 
-    Integração com notificações por e-mail.
+- [ ] Implementar a estrutura do backend com FastAPI.
+- [ ] Configurar o banco de dados.
+- [ ] Desenvolver os modelos de dados.
+- [ ] Implementar os endpoints da API REST.
+- [ ] Integrar frontend e backend.
 
-    Implementação dos recursos de segurança.
+### Monitoramento
 
-    Desenvolvimento dos testes automatizados.
+- [ ] Implementar monitoramento HTTP/HTTPS.
+- [ ] Implementar monitoramento de bancos de dados.
+- [ ] Implementar monitoramento DNS.
+- [ ] Implementar monitoramento SMTP.
+- [ ] Desenvolver a coleta periódica de métricas.
+- [ ] Implementar armazenamento de dados históricos.
 
-    Documentação técnica.
+### Alertas e segurança
 
-    Testes de integração.
+- [ ] Implementar a classificação de alertas.
+- [ ] Desenvolver o sistema de notificações por e-mail.
+- [ ] Implementar identificação de anomalias de tráfego.
+- [ ] Desenvolver monitoramento de falhas de autenticação.
+- [ ] Implementar detecção de alterações em configurações.
+- [ ] Incorporar monitoramento de vulnerabilidades conhecidas.
 
-    Preparação da apresentação final.
+### Validação e documentação
 
-🧪 Testes
+- [ ] Desenvolver testes automatizados.
+- [ ] Realizar testes de integração.
+- [ ] Documentar a arquitetura da aplicação.
+- [ ] Elaborar guias de instalação e configuração.
+- [ ] Desenvolver runbooks e playbooks de incidentes.
+- [ ] Realizar validação geral da plataforma.
+- [ ] Preparar a apresentação final.
 
-A aplicação contará com testes automatizados para validar:
+*O roadmap será atualizado conforme o desenvolvimento avançar.*
 
-    Funcionamento dos módulos de monitoramento.
+---
 
-    Processamento e armazenamento de métricas.
+## 🧪 Testes e validação
 
-    Comunicação entre frontend e backend.
+A aplicação contará com testes automatizados para verificar o funcionamento dos diferentes componentes.
 
-    Classificação dos alertas.
+A validação deverá considerar:
 
-    Funcionamento das notificações.
+- Funcionamento dos módulos de monitoramento.
+- Disponibilidade e tempo de resposta dos serviços.
+- Processamento e armazenamento de métricas.
+- Comunicação entre frontend e backend.
+- Funcionamento dos endpoints da API.
+- Classificação e geração de alertas.
+- Envio de notificações por e-mail.
+- Identificação de eventos de segurança.
 
-    Recursos de segurança.
+Os testes serão desenvolvidos utilizando **Pytest**, contemplando testes unitários e de integração.
 
-Os testes serão desenvolvidos utilizando Pytest.
-📚 Documentação
+---
 
-A documentação técnica será organizada no diretório docs/, incluindo:
+## 📚 Documentação
 
-    Arquitetura da aplicação.
+A documentação técnica será organizada no diretório `docs/`, contemplando os materiais necessários para instalação, operação e manutenção da plataforma.
 
-    Guia de instalação e configuração.
+Entre os documentos previstos estão:
 
-    Runbooks operacionais.
+- **Arquitetura:** descrição dos componentes e da comunicação entre os módulos.
+- **Instalação:** instruções para configuração e execução da aplicação.
+- **Runbooks:** procedimentos operacionais para acompanhamento e resolução de problemas.
+- **Playbooks:** orientações para identificação e resposta a incidentes.
+- **Monitoramento:** documentação dos serviços, métricas e parâmetros utilizados.
 
-    Playbooks de resposta a incidentes.
+---
 
-    Procedimentos de monitoramento.
+## 🎓 Contexto acadêmico
 
-🎓 Contexto Acadêmico
+O DevOps Monitor é um projeto acadêmico desenvolvido como parte do trabalho final da disciplina **Redes de Computadores e Internet**, do Instituto Brasileiro de Ensino, Desenvolvimento e Pesquisa (IDP).
 
-Instituição: Instituto Brasileiro de Ensino, Desenvolvimento e Pesquisa — IDP
+**Instituição:** Instituto Brasileiro de Ensino, Desenvolvimento e Pesquisa — IDP  
+**Disciplina:** Redes de Computadores e Internet  
+**Professora:** Lorena Borges  
+**Projeto:** Trabalho Final — Plataforma de Monitoramento para DevOps
 
-Disciplina: Redes de Computadores e Internet
+O desenvolvimento busca aplicar conhecimentos relacionados a:
 
-Professora: Lorena Borges
+- Redes de computadores e protocolos de comunicação.
+- Desenvolvimento de aplicações web.
+- Monitoramento de infraestrutura.
+- Segurança de redes.
+- Armazenamento e análise de métricas.
+- Observabilidade e práticas DevOps.
 
-Projeto: Trabalho Final — Plataforma de Monitoramento para DevOps
-👨‍💻 Desenvolvedores
+---
 
-Projeto acadêmico desenvolvido para aplicação prática de conceitos relacionados a:
+## 👨‍💻 Desenvolvedor
 
-    Redes de computadores.
+**Matheus Nunes**
 
-    Desenvolvimento de sistemas.
+Estudante de Engenharia de Software, interessado em desenvolvimento de software, análise de dados, infraestrutura e segurança da informação.
 
-    Monitoramento de infraestrutura.
+[![GitHub](https://img.shields.io/badge/GitHub-Matheus--Nunes223-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Matheus-Nunes223)
 
-    Segurança de redes.
+---
 
-    Observabilidade e DevOps.
+### ◈ DevOps Monitor
 
-<div align="center">
-◈ DevOps Monitor
+**MONITORAMENTO INTELIGENTE. INFRAESTRUTURA CONFIÁVEL.**
 
-Monitoramento inteligente. Infraestrutura confiável.
-
-<br>
-
-
-</div>
+*Transformando métricas em visibilidade. Visibilidade em decisões.*
