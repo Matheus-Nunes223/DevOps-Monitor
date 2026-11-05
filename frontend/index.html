@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1017"><meta name="description" content="Painel de observabilidade DevOps Monitor">
+  <title>Visão geral · DevOps Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script defer src="js/api.js"></script><script defer src="js/charts.js"></script><script defer src="js/dashboard.js"></script><script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+      <a class="brand" href="#overview" aria-label="DevOps Monitor, visão geral"><span class="brand-mark"><i></i><i></i><i></i></span><span>devops<span class="brand-light">monitor</span><small>OBSERVABILITY</small></span></a>
+      <div class="workspace"><span class="workspace-dot"></span><span>Infraestrutura principal</span><span class="chevron">⌄</span></div>
+      <nav id="navigation">
+        <p class="nav-label">MONITORAMENTO</p>
+        <a href="#overview" data-page="overview" class="nav-item active"><span class="nav-icon">◫</span>Visão geral</a>
+        <a href="#web" data-page="web" class="nav-item"><span class="nav-icon">⌘</span>Web Server<span class="nav-state good"></span></a>
+        <a href="#database" data-page="database" class="nav-item"><span class="nav-icon">▤</span>Database<span class="nav-state good"></span></a>
+        <a href="#dns" data-page="dns" class="nav-item"><span class="nav-icon">◎</span>DNS<span class="nav-state warn"></span></a>
+        <a href="#smtp" data-page="smtp" class="nav-item"><span class="nav-icon">✉</span>SMTP<span class="nav-state good"></span></a>
+        <p class="nav-label nav-gap">OPERAÇÕES</p>
+        <a href="#security" data-page="security" class="nav-item"><span class="nav-icon">⬡</span>Segurança<span class="nav-count">3</span></a>
+        <a href="#alerts" data-page="alerts" class="nav-item"><span class="nav-icon">♧</span>Central de alertas<span class="nav-count critical-count">4</span></a>
+        <a href="#settings" data-page="settings" class="nav-item"><span class="nav-icon">⚙</span>Configurações</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="api-mini"><span class="pulse-dot"></span><div><strong id="sidebar-mode">Modo demonstração</strong><small id="sidebar-connection">Dados simulados</small></div></div><button id="mode-toggle" class="mode-toggle" type="button">Conectar à API <span>→</span></button><div class="sidebar-foot"><span class="avatar">DM</span><span><strong>Demo workspace</strong><small>Plano de demonstração</small></span><span class="more">···</span></div></div>
+    </aside>
+    <div class="mobile-backdrop" id="backdrop"></div>
+    <section class="main-column">
+      <header class="topbar"><button class="icon-button mobile-menu" id="menu-toggle" aria-label="Abrir menu">☰</button><div class="breadcrumbs"><span>Workspace</span><b>/</b><strong id="breadcrumb-title">Visão geral</strong></div><div class="top-actions"><div class="connection" id="connection"><span class="pulse-dot"></span><span id="connection-text">Demonstração</span></div><time id="clock"></time><button id="refresh" class="icon-button" aria-label="Atualizar dados" title="Atualizar dados">↻</button><button class="icon-button notification-button" id="notification-button" aria-label="Notificações">♧<i></i></button><button class="profile" aria-label="Perfil de demonstração">DM<span>⌄</span></button></div></header>
+      <main id="main" tabindex="-1"><div class="loading-state"><span class="spinner"></span>Carregando painel…</div></main>
+      <footer class="page-footer"><span>DevOps Monitor <b>·</b> Plataforma de observabilidade</span><span>Atualização automática <strong id="auto-refresh-label">a cada 30s</strong></span></footer>
+    </section>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <dialog id="detail-dialog" class="detail-dialog"><form method="dialog"><button class="dialog-close" aria-label="Fechar">×</button></form><div id="dialog-content"></div></dialog>
+</body></html>
