@@ -14,19 +14,21 @@
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
-      <a class="brand" href="#overview" aria-label="DevOps Monitor, visão geral"><span class="brand-mark"><i></i><i></i><i></i></span><span>devops<span class="brand-light">monitor</span><small>OBSERVABILITY</small></span></a>
+      <div class="brand-row"><a class="brand" href="#overview" aria-label="DevOps Monitor, visão geral"><span class="brand-mark"><i></i><i></i><i></i></span><span class="brand-copy">devops<span class="brand-light">monitor</span><small>OBSERVABILITY</small></span></a><button class="icon-button sidebar-collapse" id="sidebar-collapse" type="button" aria-label="Recolher menu lateral" title="Recolher menu lateral">⇤</button></div>
       <div class="workspace"><span class="workspace-dot"></span><span>Infraestrutura principal</span><span class="chevron">⌄</span></div>
       <nav id="navigation">
-        <p class="nav-label">MONITORAMENTO</p>
-        <a href="#overview" data-page="overview" class="nav-item active"><span class="nav-icon">◫</span>Visão geral</a>
-        <a href="#web" data-page="web" class="nav-item"><span class="nav-icon">⌘</span>Web Server<span class="nav-state good"></span></a>
-        <a href="#database" data-page="database" class="nav-item"><span class="nav-icon">▤</span>Database<span class="nav-state good"></span></a>
-        <a href="#dns" data-page="dns" class="nav-item"><span class="nav-icon">◎</span>DNS<span class="nav-state warn"></span></a>
-        <a href="#smtp" data-page="smtp" class="nav-item"><span class="nav-icon">✉</span>SMTP<span class="nav-state good"></span></a>
+        <p class="nav-label">VISÃO GERAL</p>
+        <a href="#overview" data-page="overview" class="nav-item active" aria-label="Visão geral" title="Visão geral"><span class="nav-icon">◫</span><span class="nav-text">Visão geral</span></a>
+        <p class="nav-label nav-gap">MONITORAMENTO</p>
+        <a href="#web" data-page="web" class="nav-item" aria-label="Web Server" title="Web Server"><span class="nav-icon">⌘</span><span class="nav-text">Web Server</span><span class="nav-state good"></span></a>
+        <a href="#database" data-page="database" class="nav-item" aria-label="Database" title="Database"><span class="nav-icon">▤</span><span class="nav-text">Database</span><span class="nav-state good"></span></a>
+        <a href="#dns" data-page="dns" class="nav-item" aria-label="DNS" title="DNS"><span class="nav-icon">◎</span><span class="nav-text">DNS</span><span class="nav-state warn"></span></a>
+        <a href="#smtp" data-page="smtp" class="nav-item" aria-label="SMTP" title="SMTP"><span class="nav-icon">✉</span><span class="nav-text">SMTP</span><span class="nav-state good"></span></a>
         <p class="nav-label nav-gap">OPERAÇÕES</p>
-        <a href="#security" data-page="security" class="nav-item"><span class="nav-icon">⬡</span>Segurança<span class="nav-count">3</span></a>
-        <a href="#alerts" data-page="alerts" class="nav-item"><span class="nav-icon">♧</span>Central de alertas<span class="nav-count critical-count">4</span></a>
-        <a href="#settings" data-page="settings" class="nav-item"><span class="nav-icon">⚙</span>Configurações</a>
+        <a href="#security" data-page="security" class="nav-item" aria-label="Segurança" title="Segurança"><span class="nav-icon">⬡</span><span class="nav-text">Segurança</span><span class="nav-count">3</span></a>
+        <a href="#alerts" data-page="alerts" class="nav-item" aria-label="Central de alertas" title="Central de alertas"><span class="nav-icon">♧</span><span class="nav-text">Central de alertas</span><span class="nav-count critical-count">4</span></a>
+        <p class="nav-label nav-gap">SISTEMA</p>
+        <a href="#settings" data-page="settings" class="nav-item" aria-label="Configurações" title="Configurações"><span class="nav-icon">⚙</span><span class="nav-text">Configurações</span></a>
       </nav>
       <div class="sidebar-bottom"><div class="api-mini"><span class="pulse-dot"></span><div><strong id="sidebar-mode">Modo demonstração</strong><small id="sidebar-connection">Dados simulados</small></div></div><button id="mode-toggle" class="mode-toggle" type="button">Conectar à API <span>→</span></button><div class="sidebar-foot"><span class="avatar">DM</span><span><strong>Demo workspace</strong><small>Plano de demonstração</small></span><span class="more">···</span></div></div>
     </aside>
