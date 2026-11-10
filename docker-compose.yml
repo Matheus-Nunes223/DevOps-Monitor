@@ -1,0 +1,141 @@
+services:
+  demo-app:
+    build: ./infra/demo-app
+    restart: unless-stopped
+    networks: [lab]
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  nginx:
+    build: ./infra/nginx
+    depends_on:
+      demo-app: { condition: service_healthy }
+    ports: ["127.0.0.1:8080:80"]
+    volumes:
+      - nginx-logs:/var/log/nginx
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks: [lab]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  postgres:
+    container_name: devops-monitor-postgres
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: devops_monitor
+      POSTGRES_USER: devops_lab
+      POSTGRES_PASSWORD: devops_lab_only
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infra/postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    networks: [lab]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devops_lab -d devops_monitor"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  coredns:
+    build: ./infra/coredns
+    command: ["-conf", "/etc/coredns/Corefile"]
+    ports: ["127.0.0.1:1053:53/udp", "127.0.0.1:1053:53/tcp"]
+    volumes:
+      - ./infra/coredns/Corefile:/etc/coredns/Corefile:ro
+      - ./infra/coredns/lab.local.db:/etc/coredns/lab.local.db:ro
+    networks:
+      lab:
+        ipv4_address: 172.28.0.53
+    healthcheck:
+      test: ["CMD", "/bin/busybox", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:9153/metrics"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports: ["127.0.0.1:8025:8025"]
+    networks: [lab]
+    healthcheck:
+      test: ["CMD", "/bin/sh", "-c", "wget -q -O /dev/null http://127.0.0.1:8025/api/v2/messages"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  postfix:
+    container_name: devops-monitor-postfix
+    build: ./infra/postfix
+    depends_on:
+      mailhog: { condition: service_healthy }
+    environment:
+      RELAYHOST: "[mailhog]:1025"
+    ports: ["127.0.0.1:2525:25"]
+    networks: [lab]
+    healthcheck:
+      test: ["CMD-SHELL", "postfix status"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  collector:
+    build: ./collector
+    restart: unless-stopped
+    environment:
+      SUPABASE_DB_URL: ${SUPABASE_DB_URL:-}
+      LAB_DB_URL: ${LAB_DB_URL:-postgresql://devops_lab:devops_lab_only@postgres:5432/devops_monitor}
+      DOCKER_HOST: tcp://docker-stats-proxy:2375
+      COLLECT_INTERVAL_SECONDS: ${COLLECT_INTERVAL_SECONDS:-15}
+      ALERT_SMTP_HOST: ${ALERT_SMTP_HOST:-mailhog}
+      ALERT_SMTP_PORT: ${ALERT_SMTP_PORT:-1025}
+      ALERT_SMTP_USER: ${ALERT_SMTP_USER:-}
+      ALERT_SMTP_PASSWORD: ${ALERT_SMTP_PASSWORD:-}
+      ALERT_EMAIL_TO: ${ALERT_EMAIL_TO:-}
+      ALERT_EMAIL_FROM: ${ALERT_EMAIL_FROM:-alertas@devops.local}
+      DASHBOARD_URL: ${DASHBOARD_URL:-http://localhost:3000}
+      NVD_API_KEY: ${NVD_API_KEY:-}
+    volumes:
+      - nginx-logs:/var/log/nginx:ro
+      # Arquivos vigiados pelo detector de mudança de configuração (US-17), sempre :ro
+      - ./infra/nginx/nginx.conf:/monitor-config/nginx.conf:ro
+      - ./infra/coredns/Corefile:/monitor-config/Corefile:ro
+      - ./infra/postgres/postgresql.conf:/monitor-config/postgresql.conf:ro
+      - ./infra/postfix/main.cf:/monitor-config/main.cf:ro
+    networks: [lab, dockerapi]
+    depends_on:
+      nginx: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+      coredns: { condition: service_healthy }
+      postfix: { condition: service_healthy }
+      docker-stats-proxy: { condition: service_healthy }
+
+  docker-stats-proxy:
+    build: ./infra/docker_stats_proxy
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks: [dockerapi]
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:2375/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+
+networks:
+  lab:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+  dockerapi:
+    internal: true
+
+volumes:
+  nginx-logs:
+  postgres-data:

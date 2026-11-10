@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "devops-monitor-loadgen"
+version = "0.1.0"
+description = "Bounded load and fault scenarios for the DevOps Monitor lab"
+requires-python = ">=3.12,<3.13"
+dependencies = ["httpx>=0.27,<1"]
+
+[project.scripts]
+devops-loadgen = "loadgen.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<9", "ruff>=0.8,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/loadgen"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

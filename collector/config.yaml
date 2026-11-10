@@ -1,0 +1,28 @@
+# Runtime-safe defaults. Secrets are supplied through the environment.
+collect_interval_seconds: 15
+probe_timeout_seconds: 8
+max_probe_workers: 8
+icmp_hosts:
+  web: nginx
+  db: postgres
+  dns: coredns
+  smtp: postfix
+web_probe_url: http://nginx/
+dns_nameserver: 172.28.0.53
+dns_query_name: web.lab.local
+dns_missing_query_name: missing.lab.local
+dns_external_query_name: example.com
+smtp_host: postfix
+smtp_port: 25
+mailhog_api_url: http://mailhog:8025
+smtp_probe_from: monitor@devops.local
+smtp_probe_to: probe@devops.local
+smtp_probe_timeout_seconds: 6
+nginx_access_log: /var/log/nginx/access.log
+stub_status_url: http://nginx/nginx_status
+coredns_metrics_url: http://coredns:9153/metrics
+config_watch_files:
+  nginx.conf: /monitor-config/nginx.conf
+  Corefile: /monitor-config/Corefile
+  postgresql.conf: /monitor-config/postgresql.conf
+  main.cf: /monitor-config/main.cf

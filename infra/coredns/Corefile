@@ -1,0 +1,8 @@
+.:53 {
+    errors
+    log
+    prometheus 0.0.0.0:9153
+    file /etc/coredns/lab.local.db lab.local
+    forward . 1.1.1.1 8.8.8.8
+    cache 30
+}
